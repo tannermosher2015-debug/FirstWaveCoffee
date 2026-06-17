@@ -15,6 +15,35 @@
 <meta property="og:image" content="assets/og.jpg" />
 <meta name="twitter:card" content="summary_large_image" />
 
+<link rel="preload" as="image" href="assets/hero-trailer.webp" type="image/webp" fetchpriority="high" />
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "CafeOrCoffeeShop",
+  "name": "First Wave Coffee",
+  "description": "A two-brother coffee trailer in Kahului, Maui serving signature lattes, island matcha, and quick bites.",
+  "image": "assets/og.jpg",
+  "servesCuisine": "Coffee",
+  "priceRange": "$",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "214 Hoʻokele St",
+    "addressLocality": "Kahului",
+    "addressRegion": "HI",
+    "postalCode": "96732",
+    "addressCountry": "US"
+  },
+  "openingHoursSpecification": [
+    { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Tuesday", "Thursday", "Friday", "Saturday"], "opens": "07:30", "closes": "15:00" },
+    { "@type": "OpeningHoursSpecification", "dayOfWeek": "Wednesday", "opens": "07:30", "closes": "13:30" }
+  ],
+  "sameAs": [
+    "https://www.instagram.com/firstwavecoffeemaui/",
+    "https://www.yelp.com/biz/first-wave-coffee-maui"
+  ]
+}
+</script>
+
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
@@ -174,7 +203,7 @@ h1,h2,h3,h4{font-family:var(--font-display);font-weight:600;line-height:1.08;let
 .gallery figcaption,.cap{position:absolute;left:0;right:0;bottom:0;padding:26px 14px 12px;color:#fff;font-size:.86rem;font-weight:500;
   background:linear-gradient(transparent,rgba(8,30,28,.78));opacity:0;transition:opacity .3s ease;text-align:left}
 .gallery button:hover .cap,.gallery button:focus-visible .cap{opacity:1}
-dialog.lightbox{border:0;padding:0;background:transparent;max-width:92vw;max-height:92vh}
+dialog.lightbox{border:0;padding:0;background:transparent;max-width:94vw;max-height:94vh;overflow:visible}
 dialog.lightbox::backdrop{background:rgba(10,28,26,.86)}
 dialog.lightbox img{max-width:92vw;max-height:80vh;border-radius:12px;width:auto;height:auto}
 dialog.lightbox .lb-cap{color:var(--cream);text-align:center;margin-top:10px;font-size:.95rem}
@@ -240,7 +269,18 @@ dialog.lightbox .lb-close{position:absolute;top:-6px;right:-6px;background:var(-
 .footer .brand .bt b{color:var(--cream)}
 .footer .brand .bt i{color:var(--orange-on-dark)}
 /* reveal on scroll */
-.reveal{opacity:0;transform:translateY(26px);transition:opacity .7s ease,transform .7s ease}
+.reveal{opacity:0;transform:translateY(16px);transition:opacity .8s cubic-bezier(.2,.7,.2,1),transform .8s cubic-bezier(.2,.7,.2,1)}
+:where(#top,#story,#menu,#gallery,#reviews,#faq,#visit){scroll-margin-top:88px}
+@keyframes rise{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+.hero-copy>*{animation:rise .85s cubic-bezier(.2,.7,.2,1) backwards}
+.hero-copy .eyebrow{animation-delay:.04s}
+.hero-copy h1{animation-delay:.12s}
+.hero-copy .lede{animation-delay:.24s}
+.hero-copy .hero-actions{animation-delay:.34s}
+.hero-copy .pill{animation-delay:.44s}
+.hero-figure{animation:rise 1s cubic-bezier(.2,.7,.2,1) .12s backwards}
+@media (prefers-reduced-motion:reduce){.hero-copy>*,.hero-figure{animation:none}}
+.mobile-cta{display:none}
 .reveal.in{opacity:1;transform:none}
 .no-js .reveal,.reduce-motion .reveal{opacity:1;transform:none;transition:none}
 .stagger>*{transition-delay:calc(var(--i,0)*70ms)}
@@ -266,6 +306,9 @@ dialog.lightbox .lb-close{position:absolute;top:-6px;right:-6px;background:var(-
   .gallery{columns:1}
   .hero-stamp{width:78px;height:78px;font-size:.78rem;right:6px}
   .hero-badge{left:6px}
+  .mobile-cta{display:flex;position:fixed;left:0;right:0;bottom:0;z-index:1500;gap:10px;padding:10px 14px calc(10px + env(safe-area-inset-bottom));background:rgba(247,241,230,.94);backdrop-filter:blur(10px);border-top:1px solid var(--line);box-shadow:0 -10px 30px -22px rgba(14,59,55,.5)}
+  .mobile-cta .btn{flex:1;justify-content:center;padding:.82em 1em;font-size:.98rem}
+  body{padding-bottom:74px}
 }
 </style>
 </head>
@@ -572,6 +615,11 @@ dialog.lightbox .lb-close{position:absolute;top:-6px;right:-6px;background:var(-
   </section>
 </main>
 
+<div class="mobile-cta" aria-label="Quick actions">
+  <a class="btn btn--primary" id="orderBtnBar" href="#" target="_blank" rel="noopener">Order ahead</a>
+  <a class="btn btn--ghost" href="#visit">Find us</a>
+</div>
+
 <dialog class="lightbox" id="lightbox" aria-label="Photo viewer">
   <div style="position:relative">
     <button class="lb-close" id="lbClose" type="button" aria-label="Close photo">×</button>
@@ -642,7 +690,7 @@ dialog.lightbox .lb-close{position:absolute;top:-6px;right:-6px;background:var(-
   function set(id, attr, val){ var el = doc.getElementById(id); if(el) el.setAttribute(attr, val); }
   [['igFooter','instagram'],['igFooterLink','instagram'],['yelpFooter','yelp'],['yelpBtn','yelp'],
    ['googleFooter','google'],['googleBtn','google'],
-   ['orderBtnTop','order'],['orderBtnMenu','order'],['orderBtnVisit','order'],['orderFooterLink','order'],['orderLinkFaq','order'],
+   ['orderBtnTop','order'],['orderBtnMenu','order'],['orderBtnVisit','order'],['orderFooterLink','order'],['orderLinkFaq','order'],['orderBtnBar','order'],
    ['directionsBtn','directions']].forEach(function(p){ set(p[0],'href',CONFIG[p[1]]); });
   ['orderBtnTop','orderBtnMenu'].forEach(function(id){ var e=doc.getElementById(id); if(e){ e.target='_blank'; e.rel='noopener'; } });
 
