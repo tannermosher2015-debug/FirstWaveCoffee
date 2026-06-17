@@ -15,7 +15,7 @@
 <meta property="og:image" content="assets/og.jpg" />
 <meta name="twitter:card" content="summary_large_image" />
 
-<link rel="preload" as="image" href="assets/hero-trailer.webp" type="image/webp" fetchpriority="high" />
+<link rel="preload" as="image" href="assets/hero-trailer.webp" imagesrcset="assets/hero-trailer-480.webp 480w, assets/hero-trailer-640.webp 640w, assets/hero-trailer.webp 765w" imagesizes="(max-width:520px) 84vw, (max-width:920px) 460px, 46vw" type="image/webp" fetchpriority="high" />
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -362,7 +362,7 @@ dialog.lightbox .lb-close{position:absolute;top:-6px;right:-6px;background:var(-
       <figure class="hero-figure">
         <div class="photo">
           <picture>
-            <source srcset="assets/hero-trailer.webp" type="image/webp" />
+            <source type="image/webp" srcset="assets/hero-trailer-480.webp 480w, assets/hero-trailer-640.webp 640w, assets/hero-trailer.webp 765w" sizes="(max-width:520px) 84vw, (max-width:920px) 460px, 46vw" />
             <img src="assets/hero-trailer.jpg" alt="The First Wave Coffee trailer in Kahului on a sunny morning, with an iced matcha and a cinnamon roll held up in front." width="765" height="1020" fetchpriority="high" decoding="async" />
           </picture>
         </div>

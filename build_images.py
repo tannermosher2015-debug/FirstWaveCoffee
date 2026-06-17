@@ -45,6 +45,13 @@ for src, base, longest, also_jpg in JOBS:
         rgb.save(os.path.join(OUT, base + ".jpg"), "JPEG", quality=84, optimize=True, progressive=True)
     print("ok", base, img.size)
 
+# Responsive hero variants for mobile LCP (smaller widths of the eager hero image)
+hero_src = fit(load("unnamed (2).webp"), 1600).convert("RGB")
+for w in (480, 640):
+    hv = hero_src.resize((w, round(hero_src.height * w / hero_src.width)), Image.LANCZOS)
+    hv.save(os.path.join(OUT, "hero-trailer-%d.webp" % w), "WEBP", quality=80, method=6)
+    print("ok hero variant", w, hv.size)
+
 def cover(img, tw, th):
     w, h = img.size
     s = max(tw / w, th / h)
