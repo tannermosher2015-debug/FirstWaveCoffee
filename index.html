@@ -51,8 +51,8 @@
 <style>
 :root{
   --sand:#F7F1E6; --sand-2:#F0E6D4; --surface:#FFFDF8;
-  --teal-900:#0E3B37; --teal-700:#155A52; --teal:#2E7D74; --teal-soft:#DDEDE8;
-  --ember:#BC5A22; --orange:#C9682E; --orange-on-dark:#E89461; --sun:#F2A65A;
+  --teal-900:#0E3B37; --teal-700:#155A52; --teal:#2E7D74; --teal-soft:#DDEDE8; --teal-ink:#1B6F64;
+  --ember:#A8481B; --orange:#C9682E; --orange-on-dark:#E89461; --sun:#F2A65A;
   --ink:#241F1B; --ink-soft:#5C5247; --cream:#F7EFE0;
   --line:rgba(36,31,27,.12); --line-strong:rgba(36,31,27,.22);
   --radius:14px; --radius-lg:22px; --radius-pill:999px;
@@ -83,7 +83,7 @@ img{max-width:100%;display:block}
 a{color:inherit}
 h1,h2,h3,h4{font-family:var(--font-display);font-weight:600;line-height:1.08;letter-spacing:-.01em}
 .wrap{max-width:var(--maxw);margin-inline:auto;padding-inline:var(--pad)}
-.eyebrow{font-family:var(--font-body);font-weight:600;text-transform:uppercase;letter-spacing:.18em;font-size:.74rem;color:var(--teal)}
+.eyebrow{font-family:var(--font-body);font-weight:600;text-transform:uppercase;letter-spacing:.18em;font-size:.74rem;color:var(--teal-ink)}
 .section{padding-block:clamp(64px,9vw,120px);position:relative}
 .section--tint{background:var(--sand-2)}
 .section--dark{background:var(--teal-900);color:var(--cream)}
@@ -108,7 +108,7 @@ h1,h2,h3,h4{font-family:var(--font-display);font-weight:600;line-height:1.08;let
 
 /* header */
 .site-header{position:sticky;top:0;z-index:1000;transition:background .3s ease, box-shadow .3s ease, padding .3s ease}
-.site-header.is-stuck{background:rgba(247,241,230,.9);backdrop-filter:blur(10px);box-shadow:0 1px 0 var(--line),0 10px 30px -22px rgba(14,59,55,.5)}
+.site-header.is-stuck{background:var(--sand);box-shadow:0 1px 0 var(--line),0 10px 30px -22px rgba(14,59,55,.5)}
 .nav{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding-block:14px}
 .brand{display:flex;align-items:center;gap:12px;text-decoration:none;color:var(--ink)}
 .brand img{width:46px;height:auto}
@@ -126,7 +126,7 @@ h1,h2,h3,h4{font-family:var(--font-display);font-weight:600;line-height:1.08;let
 .hero{position:relative;padding-top:clamp(28px,5vw,56px);padding-bottom:clamp(40px,7vw,90px)}
 .hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(28px,5vw,64px);align-items:center}
 .hero h1{font-size:clamp(2.6rem,6.4vw,4.7rem);margin:.35em 0 .3em}
-.hero h1 em{font-style:italic;color:var(--ember)}
+.hero h1 em{font-style:italic;color:var(--orange)}
 .hero p.lede{font-size:clamp(1.05rem,1.7vw,1.28rem);color:var(--ink-soft);max-width:34ch}
 .hero-actions{display:flex;flex-wrap:wrap;gap:14px;margin-top:1.8rem}
 .pill{display:inline-flex;align-items:center;gap:9px;font-size:.92rem;font-weight:600;background:var(--surface);
@@ -265,7 +265,7 @@ dialog.lightbox .lb-close{position:absolute;top:-6px;right:-6px;background:var(-
 /* brand text overrides */
 .brand .bt{display:flex;flex-direction:column;line-height:1.06}
 .brand .bt b{font-family:var(--font-display);font-weight:600;font-size:1.18rem;letter-spacing:-.02em;color:var(--ink);text-transform:none}
-.brand .bt i{font-style:normal;font-size:.62rem;letter-spacing:.2em;text-transform:uppercase;color:var(--teal);font-weight:600}
+.brand .bt i{font-style:normal;font-size:.62rem;letter-spacing:.2em;text-transform:uppercase;color:var(--teal-ink);font-weight:600}
 .footer .brand .bt b{color:var(--cream)}
 .footer .brand .bt i{color:var(--orange-on-dark)}
 /* reveal on scroll */
@@ -280,7 +280,8 @@ dialog.lightbox .lb-close{position:absolute;top:-6px;right:-6px;background:var(-
 .hero-copy .pill{animation-delay:.44s}
 .hero-figure{animation:rise 1s cubic-bezier(.2,.7,.2,1) .12s backwards}
 @media (prefers-reduced-motion:reduce){.hero-copy>*,.hero-figure{animation:none}}
-.mobile-cta{display:none}
+.mobile-cta{display:none;transition:transform .35s ease}
+.mobile-cta.is-hidden{transform:translateY(140%);pointer-events:none}
 .reveal.in{opacity:1;transform:none}
 .no-js .reveal,.reduce-motion .reveal{opacity:1;transform:none;transition:none}
 .stagger>*{transition-delay:calc(var(--i,0)*70ms)}
@@ -514,7 +515,7 @@ dialog.lightbox .lb-close{position:absolute;top:-6px;right:-6px;background:var(-
           <p class="who">Regular at the window</p>
         </blockquote>
       </div>
-      <p style="font-size:.82rem;color:#9c917f;margin-top:1.4rem">Quotes reflect recurring review themes; final verbatim text and names to be confirmed before launch.</p>
+      <p style="font-size:.82rem;color:#b3a994;margin-top:1.4rem">Quotes reflect recurring review themes; final verbatim text and names to be confirmed before launch.</p>
       <div class="review-actions">
         <a class="btn btn--on-dark" id="yelpBtn" href="#" target="_blank" rel="noopener">Read us on Yelp</a>
         <a class="btn btn--on-dark" id="googleBtn" href="#" target="_blank" rel="noopener">See Google reviews</a>
@@ -754,6 +755,11 @@ dialog.lightbox .lb-close{position:absolute;top:-6px;right:-6px;background:var(-
     if(lbClose) lbClose.addEventListener('click', function(){ dlg.close(); });
     dlg.addEventListener('click', function(e){ if(e.target===dlg) dlg.close(); });
     dlg.addEventListener('close', function(){ if(opener) opener.focus(); lbImg.removeAttribute('src'); });
+  }
+
+  var bar=doc.querySelector('.mobile-cta'), foot=doc.querySelector('.footer');
+  if(bar && foot && 'IntersectionObserver' in window){
+    new IntersectionObserver(function(es){ es.forEach(function(en){ bar.classList.toggle('is-hidden', en.isIntersecting); }); }).observe(foot);
   }
 
   var form=doc.getElementById('contactForm'), status=doc.getElementById('formStatus');
