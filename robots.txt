@@ -1,0 +1,6 @@
+# This is a CONCEPT / design-preview site by Frontline Web Designs — not the
+# official First Wave Coffee website. Keep it out of search results so it never
+# competes with or impersonates the real business.
+# If First Wave adopts this as their official site, change to "Allow: /" and add a sitemap.
+User-agent: *
+Disallow: /
