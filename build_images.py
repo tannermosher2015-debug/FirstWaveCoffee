@@ -6,7 +6,7 @@ from PIL import Image, ImageOps, ImageDraw, ImageFont
 import os
 
 SRC = r"C:\Users\Tanne\frontline-web-design\FirstWaveCoffee"
-OUT = r"C:\Users\Tanne\first-wave-coffee\assets"
+OUT = os.path.join(os.path.dirname(os.path.abspath(__file__)), "assets")
 os.makedirs(OUT, exist_ok=True)
 
 # source file -> output basename, longest-edge px, also-jpg?

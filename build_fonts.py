@@ -4,7 +4,7 @@ okina and macrons keep the brand font), downloads them to assets/fonts/, and emi
 local @font-face block to assets/fonts/_fontface.css for inlining. Re-run to refresh."""
 import os, re, urllib.request
 
-OUT = r"C:\Users\Tanne\first-wave-coffee\assets\fonts"
+OUT = os.path.join(os.path.dirname(os.path.abspath(__file__)), "assets", "fonts")
 os.makedirs(OUT, exist_ok=True)
 
 # Variable ranges so we get ONE file per (family, style, subset) covering all weights used.
